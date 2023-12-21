@@ -1,13 +1,22 @@
 from fastapi import FastAPI
-import numpy as np
+import random
+import string
 
 app = FastAPI()
+
+def generate_random_string():
+    N = 7 
+    res = ''.join(random.choices(string.ascii_uppercase +
+                             string.digits, k=N))
+    return res
 
 
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
 
-@app.get("/randomint")
+
+@app.get("/randomstr")
 async def root(x):
-    return {"message": x}
+    response = generate_random_string()
+    return {"message": response}
