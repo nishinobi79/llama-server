@@ -1,5 +1,5 @@
 # model.py
-from transformers import AutoModelForSequenceClassification, TFAutoModelForSequenceClassification, AutoTokenizer
+from transformers import AutoModelForSequenceClassification, TFAutoModelForSequenceClassification, AutoTokenizer, AutoModelForCausalLM
 
 class Model:
   """A model class to lead the model and tokenizer"""
@@ -8,9 +8,9 @@ class Model:
     pass
   
   def load_model():
-    model = AutoModelForSequenceClassification.from_pretrained("./models/roberta-base/")
+    model = AutoModelForCausalLM.from_pretrained("./models/bloom-560m")
     return model
 
   def load_tokenizer():
-    tokenizer = AutoTokenizer.from_pretrained("./models/roberta-base/")
+    tokenizer = AutoTokenizer.from_pretrained("./models/bloom-560m")
     return tokenizer

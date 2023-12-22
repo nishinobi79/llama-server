@@ -1,9 +1,9 @@
-from classifier import Classifier
+from generator import Generator
 
 class NLP:
-    def __init__(self, classifier:Classifier):
-        self.classifier = classifier
+    def __init__(self, generator:Generator):
+        self.generator = generator
 
-    def sentiment_analysis(self, text): 
-        sentiment = self.classifier.get_sentiment_label_and_score(text)
-        return sentiment
+    def text_generation(self, text): 
+        output = self.generator.get_generated_text(text)
+        return output

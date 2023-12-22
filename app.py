@@ -1,6 +1,6 @@
 from fastapi import FastAPI, APIRouter
 import uvicorn
-from classifier import Classifier
+from generator import Generator
 from model import Model
 from nlp import NLP
 import logging as log
@@ -11,30 +11,22 @@ log.basicConfig(level = log.INFO)
 
 app = FastAPI()
 router = APIRouter()
-classifier = Classifier()
-nlp = NLP(classifier)
+generator = Generator()
+nlp = NLP(generator)
 
 @router.get("/")
 async def home():
     return {"message": "Machine Learning service"}
 
-@router.post("/sentiment")
+@router.post("/generation")
 async def data(data: dict):
     try:
         input_text = data["text"]
-        print(input_text)
-        res = nlp.sentiment_analysis(input_text)
+        res = nlp.text_generation(input_text)
         return {"res": res}
     except Exception as e:
         log.error("Something went wrong")
 
-@router.post("/random")
-async def data(data: dict):
-    try:
-        res = np.random.uniform(0,1)
-        return {"res": res}
-    except Exception as e:
-        log.error("Something went wrong")
 
 app.include_router(router)
 
