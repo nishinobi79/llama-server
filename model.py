@@ -8,9 +8,9 @@ class Model:
     pass
   
   def load_model():
-    model = AutoModelForCausalLM.from_pretrained("./models/bloom-560m")
+    model = AutoModelForCausalLM.from_pretrained("./models/tweets-bloom-560m")
     return model
 
   def load_tokenizer():
-    tokenizer = AutoTokenizer.from_pretrained("./models/bloom-560m")
+    tokenizer = AutoTokenizer.from_pretrained("./models/tweets-bloom-560m")
     return tokenizer
